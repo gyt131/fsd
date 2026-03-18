@@ -1,0 +1,159 @@
+Aim : Write a program for conditional rendering and rendering lists.
+ 
+import React from "react";
+function Greeting({ isLoggedIn }) {
+if (isLoggedIn) {
+return <h1>Welcome back!</h1>; }
+return <h1>Please log in.</h1>; }
+function App() {
+return (
+<div>
+<Greeting isLoggedIn={false} />
+</div> ); }
+export default App;
+
+
+
+Using Ternary Operator (? :)
+
+import React from "react";
+function Greeting({ isLoggedIn }) {
+return (
+<div>
+{isLoggedIn ? <h1>Welcome back!</h1> : <h1>Please log in.</h1>}
+</div> );}
+Using Logical AND (&&)
+import React from "react";
+function Notification({ hasMessage }) {
+return (
+<div>
+{hasMessage && <p>You have a new message!</p>}
+</div> );}
+
+Using Element Variables
+import React from "react";
+function Greeting({ isLoggedIn }) {
+let message;
+if (isLoggedIn) {
+message = <h1>Hello,Gayathri!</h1>;
+} else {
+message = <h1>Please log in.</h1>; }
+return <div>{message}</div>;}
+function App() {
+return (
+<div>
+{/* Toggle true/false to test both cases */}
+<Greeting isLoggedIn={true} />
+</div> );}
+export default App;
+
+
+
+Using Switch Statement
+
+import React from "react";
+function Status({ status }) {
+switch (status) {
+case "loading":
+return <p>Loading...</p>;
+case "success":
+return <p>Data loaded!</p>;
+case "error":
+return <p>Error occurred.</p>;
+default:
+return null; }}
+export default App;
+Conditional Rendering with Components
+import React from "react";
+function Dashboard() {
+return <h2>Welcome to your dashboard!</h2>; }
+function Login() {
+return <h2>Please log in to continue.</h2>;}
+export default App;
+Basic List Rendering with map()
+import React from "react";
+function FruitList() {
+const fruits = ["Apple", "Banana", "Orange"];
+return (
+<ul>
+{fruits.map((fruit, index) => (
+<li key={index}>{fruit}</li>
+))}
+</ul> );}
+function App() {
+return (
+<div>
+<h2>Fruit List</h2>
+<FruitList />
+</div> );}
+export default App;
+Rendering List of Objects
+import React from "react";
+function UserList() {
+const users = [
+{ id: 1, name: "John" },
+{ id: 2, name: "Jane" },
+{ id: 3, name: "Mike" } ];
+return (
+<ul>
+{users.map(user => (
+<li key={user.id}>{user.name}</li>
+))}
+</ul> );}
+function App() {
+return ( <div> <h2>User List</h2>
+<UserList />
+</div>)}
+export default App;
+Rendering Components in a List
+import React from "react";
+function Product({ name, price }) {
+return (
+<div>
+<h3>{name}</h3>
+<p>${price}</p>
+</div> );}
+function ProductList() {
+const products = [
+{ id: 1, name: "Laptop", price: 1000 },
+{ id: 2, name: "Phone", price: 500 }];
+return (
+<div>
+{products.map(product => (
+<Product
+key={product.id}
+name={product.name}
+price={product.price} /> ))}
+</div> );}
+function App() {
+return (
+<div>
+<h2>Product List</h2>
+<ProductList />
+</div> );}
+export default App;
+Conditional Rendering Inside Lists
+import React from "react";
+function UserList() {
+const users = [
+{ id: 1, name: "John", isActive: true },
+{ id: 2, name: "Jane", isActive: false },
+{ id: 3, name: "Mike", isActive: true }
+];
+return (
+<ul>
+{users
+.filter(user => user.isActive)
+.map(user => (
+<li key={user.id}>{user.name}</li>
+))}
+</ul> );}
+function App() {
+return (
+<div>
+<h2>Active Users</h2>
+<UserList />
+</div>
+);
+}
+export default App;
