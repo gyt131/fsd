@@ -1,0 +1,52 @@
+let genericNumber: Array<number> = [10, 20, 30];
+let genericString: Array<string> = ["TS", "JavaScript", "Node"];
+
+console.log("Generic Number Array:", genericNumber);
+console.log("Generic String Array:", genericString);
+
+function displayItem<T>(item: T): void {
+    console.log("Item:", item);
+}
+
+displayItem<number>(100);
+displayItem<string>("Hello Generics");
+displayItem<boolean>(true);
+
+function pair<T, U>(first: T, second: U) {
+    return { first, second };
+}
+
+console.log("Pair:", pair<string, number>("Age", 25));
+
+interface HasLength {
+    length: number;
+}
+
+function showLength<T extends HasLength>(item: T): void {
+    console.log("Length:", item.length);
+}
+
+showLength("TypeScript");
+showLength([1, 2, 3, 4]);
+
+class Box<T> {
+    value: T;
+
+    constructor(value: T) {
+        this.value = value;
+    }
+
+    display(): void {
+        console.log("Box contains:", this.value);
+    }
+}
+
+let numBox = new Box<number>(55);
+numBox.display();
+
+let strBox = new Box<string>("Generic Class");
+strBox.display();
+
+
+exec:
+node 1f.js
