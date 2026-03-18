@@ -1,0 +1,102 @@
+nstalling packages:
+E:\23481A0529\exp3>npm init –y
+E:\23481A0529\exp3>npm install nodemon
+E:\23481A0529\exp3>npm install express nodemon
+E:\23481A0529\exp3>npm install ejs
+Open visual studio code,go to file menu -> open folder ->go to exp3 path->package.json file
+"scripts": {
+"test": "echo \"Error: no test specified\" && exit 1",
+"start":"nodemon app.js"
+},
+
+
+login.ejs:
+<html>
+<head>
+<title>Login page</title>
+</head>
+<body>
+<form id="loginForm">
+<h2>Login Page</h2>
+<input type="email" placeholder="Email" required><br><br>
+<input type="password" placeholder="Password" required><br><br>
+<button>Login</button>
+</form>
+</body>
+</html>
+
+Reg.ejs:
+<html>
+<head>
+<title>Registration Page</title>
+</head>
+<body>
+<h2>Registration Form</h2>
+<form>
+<label>Email:</label><br>
+<input type="email" name="email"><br><br>
+<label>Username:</label><br>
+<input type="text" name="username"><br><br>
+<label>Password:</label><br>
+<input type="password" name="password"><br><br>
+<input type="submit" value="Register">
+</form>
+</body> </html>
+
+Program:
+
+const ejs=require('ejs');
+const express=require('express');
+const app=express();
+const port=5000;
+app.set('view engine','ejs');
+app.get('/login',(req,res)=>{
+res.render('login');
+})
+app.get('/reg',(req,res)=>{
+res.render('reg');
+})
+app.listen(port,()=>{
+console.log('Server Started 5000 port');
+})
+
+
+
+
+
+B)working with form data.
+
+const express = require('express');
+const app = express();
+// Middleware to read form data
+app.use(express.urlencoded({ extended: true }));
+// Home page with form
+app.get('/', (req, res) => {
+res.send(`
+<h2>Student Registration Form</h2>
+<form method="POST" action="/submit">
+Name: <input type="text" name="name" /><br><br>
+Email: <input type="email" name="email" /><br><br>
+Age: <input type="number" name="age" /><br><br>
+<input type="submit" value="Submit" />
+</form>
+`);
+});
+// Handle form submission
+app.post('/submit', (req, res) => {
+const { name, email, age } = req.body;
+res.send(`
+<h2>Form Data Received</h2>
+Name: ${name}<br>
+Email: ${email}<br>
+Age: ${age}
+`);
+});
+// Server
+app.listen(3000, () => {
+console.log('Server running on http://localhost:3000');
+});
+
+
+
+
