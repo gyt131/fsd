@@ -1,0 +1,18 @@
+const greetuser = (uname?: string): string => {
+    return uname ? `Hello, ${uname}!` : "Hello, Guest!";
+}
+const calculateArea = (length: number, width: number = 10): number => {
+    return length * width;
+}
+const sumAll = (...numbers : number[]) : number => {
+    return numbers.reduce((total,num) => total + num ,0);
+}
+
+console.log(greetuser("Gayathri"));
+console.log(calculateArea(5,10));
+console.log(sumAll(10,20,30,40));
+
+
+
+execution :
+node 1c.js
