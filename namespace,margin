@@ -1,0 +1,36 @@
+namespace Geometry {
+    export class Rectangle {
+        private width: number;
+        private height: number;
+
+        constructor(width: number, height: number) {
+            this.width = width;
+            this.height = height;
+        }
+
+        public area(): number {
+            return this.width * this.height;
+        }
+    }
+
+    export class Circle {
+        private radius: number;
+
+        constructor(radius: number) {
+            this.radius = radius;
+        }
+
+        public area(): number {
+            return Math.PI * this.radius * this.radius;
+        }
+    }
+}
+let rect = new Geometry.Rectangle(11, 5);
+console.log("Rectangle Area:", rect.area());
+
+let circle = new Geometry.Circle(4);
+console.log("Circle Area:", circle.area());
+
+
+execution:
+node 1e.js
