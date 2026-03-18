@@ -1,0 +1,43 @@
+class Student {
+    public name: string;
+    private age: number;
+    protected course: string;
+
+    constructor(name: string, age: number, course: string) {
+        this.name = name;
+        this.age = age;
+        this.course = course;
+    }
+
+    public displayDetails(): void {
+        console.log("Student Name: " + this.name);
+        console.log("Age: " + this.age);
+        console.log("Course: " + this.course);
+    }
+
+    private getAgeInMonths(): number {
+        return this.age * 12;
+    }
+
+    public showAgeInMonths(): void {
+        console.log("Age in months: " + this.getAgeInMonths());
+    }
+}
+
+class GraduateStudent extends Student {
+    public showCourse(): void {
+        console.log("Course (protected): " + this.course);
+    }
+}
+
+let stu = new Student("Gayathri", 20, "CSE");
+stu.displayDetails();
+stu.showAgeInMonths();
+
+let grad = new GraduateStudent("Pallavi", 23, "Data Science");
+grad.showCourse();
+
+
+execution:
+npx tsc 1d.js
+node 1d.js
