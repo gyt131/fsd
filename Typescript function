@@ -1,0 +1,29 @@
+function getTime() { 
+    return new Date().getTime(); 
+} 
+function printName(): void { 
+    console.log("Gayathri"); 
+} 
+function multiply(a:number,b:number){ 
+    return a*b; 
+} 
+function add(a: number, b: number, c?: number) { 
+  return a + b + (c || 0); 
+} 
+function divide({ dividend, divisor }: { dividend: number, divisor: number }) { 
+  return dividend / divisor; 
+} 
+function addd(a: number, b: number, ...rest: number[]) { 
+  return a + b + rest.reduce((p, c) => p + c, 0); 
+} 
+console.log(getTime()); 
+printName(); 
+console.log(multiply(12,3)); 
+console.log(add(20,5)); 
+console.log(divide({dividend: 20, divisor: 2})); 
+console.log(addd(10,10,10,10,10)); 
+ 
+
+
+Execution :
+node 1b.js
